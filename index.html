@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Benjamin Ajewole's MSc Computer Science e-portfolio, documenting academic work, professional experience, technical projects and reflective practice.">
+  <meta name="description"
+    content="Benjamin Ajewole's MSc Computer Science e-portfolio, documenting academic work, professional experience, technical projects and reflective practice.">
+  <meta name="color-scheme" content="light dark">
   <title>Benjamin Ajewole | MSc Computer Science E-Portfolio</title>
+  <script>
+    const savedTheme = localStorage.getItem("theme");
+    document.documentElement.dataset.theme = savedTheme ||
+      (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+  <div class="scroll-progress" aria-hidden="true"></div>
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <header class="site-header">
@@ -30,6 +42,10 @@
           <li><a href="#reflection">Reflection</a></li>
         </ul>
       </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
+        <span class="theme-icon theme-icon-light" aria-hidden="true">☀</span>
+        <span class="theme-icon theme-icon-dark" aria-hidden="true">☾</span>
+      </button>
     </div>
   </header>
 
@@ -48,7 +64,8 @@
 
           <div class="hero-actions">
             <a class="button button-primary" href="#programme">Explore my MSc journey</a>
-            <a class="button button-secondary" href="https://www.linkedin.com/in/rexben/" target="_blank" rel="noopener noreferrer">View LinkedIn</a>
+            <a class="button button-secondary" href="https://www.linkedin.com/in/rexben/" target="_blank"
+              rel="noopener noreferrer">View LinkedIn</a>
           </div>
 
           <ul class="hero-tags" aria-label="Professional focus areas">
@@ -132,7 +149,11 @@
                 integration design and engineering quality.
               </p>
               <ul class="chip-list">
-                <li>Azure</li><li>AKS</li><li>NestJS</li><li>Architecture</li><li>Security</li>
+                <li>Azure</li>
+                <li>AKS</li>
+                <li>NestJS</li>
+                <li>Architecture</li>
+                <li>Security</li>
               </ul>
             </div>
           </article>
@@ -148,7 +169,10 @@
                 collaborative product environment.
               </p>
               <ul class="chip-list">
-                <li>TypeScript</li><li>Node.js</li><li>Cloud</li><li>APIs</li>
+                <li>TypeScript</li>
+                <li>Node.js</li>
+                <li>Cloud</li>
+                <li>APIs</li>
               </ul>
             </div>
           </article>
@@ -164,7 +188,9 @@
                 technical implementations.
               </p>
               <ul class="chip-list">
-                <li>Backend Engineering</li><li>Databases</li><li>APIs</li>
+                <li>Backend Engineering</li>
+                <li>Databases</li>
+                <li>APIs</li>
               </ul>
             </div>
           </article>
@@ -199,23 +225,10 @@
             <a href="#" aria-label="Open Launch into Computing portfolio">View module evidence <span>→</span></a>
           </article>
 
-          <article class="module-card">
-            <div class="module-topline">
-              <span class="status completed">Completed</span>
-              <span>Module 2</span>
-            </div>
-            <h3>Object-Oriented Programming</h3>
-            <p>
-              Programming concepts, language comparison, debugging, software quality
-              and professional issues in computing.
-            </p>
-            <a href="#" aria-label="Open Object-Oriented Programming portfolio">View module evidence <span>→</span></a>
-          </article>
-
           <article class="module-card featured-card">
             <div class="module-topline">
               <span class="status current">Current</span>
-              <span>Module 3</span>
+              <span>Module 2</span>
             </div>
             <h3>Secure Software Development</h3>
             <p>
@@ -263,7 +276,9 @@
               EventBridge, DynamoDB, dead-letter queues, idempotency and observability.
             </p>
             <ul class="chip-list">
-              <li>AWS</li><li>Serverless</li><li>Event-driven</li>
+              <li>AWS</li>
+              <li>Serverless</li>
+              <li>Event-driven</li>
             </ul>
           </article>
 
@@ -275,7 +290,9 @@
               embedding latency, caching, confidence checks and data-source trade-offs.
             </p>
             <ul class="chip-list">
-              <li>Azure AI Search</li><li>Cosmos DB</li><li>RAG</li>
+              <li>Azure AI Search</li>
+              <li>Cosmos DB</li>
+              <li>RAG</li>
             </ul>
           </article>
 
@@ -287,21 +304,12 @@
               governance controls, ethical responsibility and enterprise adoption.
             </p>
             <ul class="chip-list">
-              <li>AI Governance</li><li>Security</li><li>Research</li>
+              <li>AI Governance</li>
+              <li>Security</li>
+              <li>Research</li>
             </ul>
           </article>
 
-          <article class="project-card">
-            <p class="item-kicker">Secure Design</p>
-            <h3>University threat model</h3>
-            <p>
-              A misuse-case analysis covering identity attacks, unauthorised access,
-              ransomware, smart-device compromise and layered security controls.
-            </p>
-            <ul class="chip-list">
-              <li>Threat Modelling</li><li>Zero Trust</li><li>UML</li>
-            </ul>
-          </article>
         </div>
       </div>
     </section>
@@ -366,6 +374,11 @@
               <p>Amazon Web Services</p>
             </article>
             <article>
+              <span>Certification</span>
+              <h3>Microsoft Certified: Azure Developer Associate</h3>
+              <p>Microsoft · Issued February 2026</p>
+            </article>
+            <article>
               <span>Community</span>
               <h3>AWS Community Builder</h3>
               <p>Serverless category</p>
@@ -402,7 +415,8 @@
           <h2>Explore my professional profile and technical work.</h2>
         </div>
         <div class="contact-links">
-          <a class="button button-primary" href="https://www.linkedin.com/in/rexben/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="button button-primary" href="https://www.linkedin.com/in/rexben/" target="_blank"
+            rel="noopener noreferrer">LinkedIn</a>
           <a class="button button-secondary" href="#" aria-label="Add your GitHub URL">GitHub</a>
         </div>
       </div>
@@ -415,5 +429,47 @@
       <a href="#home">Back to top ↑</a>
     </div>
   </footer>
+  <script>
+    const scrollProgress = document.querySelector(".scroll-progress");
+    const themeToggle = document.querySelector(".theme-toggle");
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+    function currentTheme() {
+      return document.documentElement.dataset.theme || (systemTheme.matches ? "dark" : "light");
+    }
+
+    function updateThemeToggle() {
+      const nextTheme = currentTheme() === "dark" ? "light" : "dark";
+      const label = `Switch to ${nextTheme} mode`;
+      themeToggle.setAttribute("aria-label", label);
+      themeToggle.title = label;
+    }
+
+    themeToggle.addEventListener("click", () => {
+      const nextTheme = currentTheme() === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = nextTheme;
+      localStorage.setItem("theme", nextTheme);
+      updateThemeToggle();
+    });
+
+    systemTheme.addEventListener("change", (event) => {
+      if (!localStorage.getItem("theme")) {
+        document.documentElement.dataset.theme = event.matches ? "dark" : "light";
+      }
+      updateThemeToggle();
+    });
+    updateThemeToggle();
+
+    function updateScrollProgress() {
+      const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 1;
+      scrollProgress.style.transform = `scaleX(${Math.min(Math.max(progress, 0), 1)})`;
+    }
+
+    updateScrollProgress();
+    window.addEventListener("scroll", updateScrollProgress, { passive: true });
+    window.addEventListener("resize", updateScrollProgress);
+  </script>
 </body>
+
 </html>
