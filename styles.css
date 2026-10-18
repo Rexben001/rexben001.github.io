@@ -1144,10 +1144,10 @@ footer {
   font-size: 1.1rem;
 }
 
-.feedback-quote {
-  color: var(--forest-soft);
-  background: var(--green-light);
-  border-left-color: var(--green);
+blockquote.feedback-quote {
+  color: #123d2e;
+  background: #e8f5ee;
+  border-left-color: #23875b;
   font-family: "DM Sans", sans-serif;
   font-size: 1rem;
   line-height: 1.75;
@@ -1330,8 +1330,8 @@ footer {
   color: #e7f2eb;
 }
 
-:root[data-theme="dark"] .feedback-quote {
-  color: #d5e5dc;
+:root[data-theme="dark"] blockquote.feedback-quote {
+  color: #eef8f2;
   background: #173c2c;
   border-left-color: #5ec18b;
 }
