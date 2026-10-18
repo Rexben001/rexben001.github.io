@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Benjamin Ajewole's reflective Cloud Computing e-portfolio, covering cloud service models, edge computing, disaster recovery, serverless systems, AI and industry application.">
+    content="Benjamin Ajewole's reflective Cloud Computing e-portfolio, covering service models, Kubernetes, edge computing, Infrastructure as Code, serverless systems, AI and industry application.">
   <meta name="color-scheme" content="light dark">
   <title>Cloud Computing | Benjamin Ajewole E-Portfolio</title>
   <script>
@@ -54,13 +54,13 @@
         <p class="eyebrow">Reflective e-Portfolio</p>
         <h1>Cloud Computing</h1>
         <p class="article-lead">
-          A critical reflection on cloud architecture, practical skills and applying
-          service models, resilience, serverless, edge and AI concepts to industry.
+          A critical reflection on cloud architecture, practical deployment and applying service models,
+          cloud-native technology, Infrastructure as Code, serverless, edge and AI concepts to industry.
         </p>
         <ul class="hero-tags" aria-label="Topics covered">
-          <li>Cloud architecture</li>
+          <li>Cloud-native</li>
+          <li>Kubernetes</li>
           <li>Infrastructure as Code</li>
-          <li>Resilience</li>
           <li>Serverless</li>
           <li>Edge &amp; AI</li>
         </ul>
@@ -76,11 +76,11 @@
             <li>
               <a href="#weekly-reflections">Weekly reflections</a>
               <ol>
-                <li><a href="#cloud-fundamentals">Week 1 · Cloud fundamentals</a></li>
-                <li><a href="#hybrid-fog-edge">Week 6 · Hybrid, fog &amp; edge</a></li>
-                <li><a href="#disaster-recovery">Week 8 · Disaster recovery</a></li>
-                <li><a href="#serverless-computing">Week 10 · Serverless</a></li>
-                <li><a href="#ai-cloud">Week 11 · AI &amp; cloud</a></li>
+                <li><a href="#cloud-fundamentals">Unit 1 · Cloud fundamentals</a></li>
+                <li><a href="#cloud-native">Unit 5 · Cloud native</a></li>
+                <li><a href="#hybrid-fog-edge">Unit 6 · Hybrid, fog &amp; edge</a></li>
+                <li><a href="#serverless-computing">Unit 10 · Serverless</a></li>
+                <li><a href="#ai-cloud">Unit 11 · AI &amp; cloud</a></li>
               </ol>
             </li>
             <li><a href="#skills-development">Skills development</a></li>
@@ -99,18 +99,19 @@
           <h2>Introduction</h2>
           <p>
             Cloud computing has changed how organisations build, deploy and manage applications. Instead of relying
-            only on physical infrastructure, organisations can use cloud services based on their requirements and pay
-            for the resources they need. During this module, I explored the main cloud service models, including
-            Infrastructure as a Service (IaaS), Platform as a Service (PaaS) and Software as a Service (SaaS), together
-            with public, private and hybrid deployment approaches (Mell and Grance, 2011).
+            only on physical infrastructure, organisations can select managed services according to workload, control
+            and cost requirements. NIST distinguishes Infrastructure as a Service (IaaS), Platform as a Service (PaaS)
+            and Software as a Service (SaaS), together with public, private, community and hybrid deployment models
+            (Mell and Grance, 2011). During this module, I explored these concepts through discussion activities,
+            cloud-native deployment, Infrastructure as Code (IaC), serverless computing and architecture design. The
+            practical activities were useful because they allowed me to compare what a technology promises with the
+            effort required to configure, deploy and operate it.
           </p>
           <p>
-            The module also reinforced that cloud computing is not only about moving applications to the cloud.
-            Architecture decisions involve security, scalability, cost, resilience and operational responsibility
-            (Gupta, 2024). This e-Portfolio reflects on five areas selected across the module: cloud fundamentals from
-            Unit 1, hybrid and edge computing from Unit 6, disaster recovery from Unit 8, serverless computing from Unit
-            10, and AI in cloud computing from Unit 11. Units 10–12 also introduced emerging directions in cloud
-            computing, particularly serverless and AI-enabled cloud services, which inform my future learning goals.
+            The main change in my thinking is that cloud architecture is not simply about choosing services. Decisions
+            about scalability, portability, security, cost and operational responsibility are connected, and improving
+            one area can introduce trade-offs elsewhere (Gupta, 2024). This e-Portfolio reflects on selected learning
+            across the module and links those reflections to practical evidence in the appendices.
           </p>
         </section>
 
@@ -119,123 +120,115 @@
           <h2>Weekly Reflections</h2>
 
           <section id="cloud-fundamentals" class="reflection-block">
-            <h3>2.1 Week 1 / Unit 1: Cloud Fundamentals and Service Models</h3>
+            <h3>2.1 Unit 1: Cloud Fundamentals and Service Models</h3>
             <p>
-              I was already familiar with IaaS, PaaS and SaaS before this module, but Unit 1 helped me think about them
-              more from an architectural and business point of view. Mell and Grance (2011) describe the service models
-              in terms of what is provided by the cloud provider and what remains under the customer’s control. This
-              made the relationship between flexibility and operational responsibility clearer to me.
+              Unit 1 revisited IaaS, PaaS and SaaS, but the most useful part for me was comparing AWS and Microsoft Azure
+              in a discussion-board activity (see <a href="#appendix-a">Appendix A</a>). I compared services, ecosystem
+              fit, flexibility and pricing rather than treating the providers as interchangeable. Kamal et al. (2020)
+              identify differences in provider strengths, while Rajendran et al. (2023) show that deployment suitability
+              depends on workload characteristics.
             </p>
             <p>
-              What became more obvious is that more control is not always better. A virtual machine provides flexibility
-              but also requires responsibility for operating system maintenance, patching and configuration, while a
-              managed PaaS service removes some of that work. This was reflected in the Azure infrastructure exercise,
-              where Azure App Service and Azure SQL Database provided a simpler managed approach than building the same
-              solution around virtual machines (see <a href="#appendix-a">Appendix A</a>).
+              The exercise reinforced that a larger service catalogue does not automatically make a provider better.
+              AWS can offer broad architectural choice, but that choice can increase configuration complexity. Azure
+              can be attractive to organisations already using Microsoft technologies, but ecosystem integration can
+              also increase dependency on one provider. The lecturer feedback on my post reinforced this balanced
+              approach. My main lesson was that provider and service-model selection should begin with workload and
+              organisational requirements rather than brand preference.
+            </p>
+          </section>
+
+          <section id="cloud-native" class="reflection-block">
+            <h3>2.2 Unit 5: Cloud Native Technology Part 2</h3>
+            <p>
+              Unit 5 focused on the 12-Factor App methodology and Kubernetes. The 12-Factor principles encouraged me to
+              think about cloud-native design beyond simply packaging an application in a container. Separating
+              configuration from code, treating backing services as attached resources and designing replaceable
+              processes all make applications easier to deploy and scale across environments (Wiggins, 2017).
             </p>
             <p>
-              The main lesson for me was that the service model should be selected according to the workload and
-              organisational requirements rather than simply choosing the option that provides the most technical
-              control.
+              I applied the Kubernetes part practically by deploying a containerised application called FocusFlow to
+              Minikube (see <a href="#appendix-b">Appendix B</a>). The deployment used two replicas, a rolling-update
+              strategy, CPU and memory requests and limits, and startup, readiness and liveness probes. I then used
+              <code class="inline-code">kubectl</code> to confirm that the pods, ReplicaSet, Deployment and ClusterIP
+              service were running correctly. Kubernetes provides orchestration capabilities for containerised
+              workloads, but the additional scheduling, health-checking and configuration mechanisms also increase
+              operational complexity (Burns et al., 2016).
+            </p>
+            <p>
+              This exercise made the trade-off clearer to me. Kubernetes can improve repeatability, health management
+              and scaling, but it should not be introduced merely because containers are being used. The workload must
+              justify the extra platform complexity, and the team must also be able to operate the orchestration layer
+              reliably.
             </p>
           </section>
 
           <section id="hybrid-fog-edge" class="reflection-block">
-            <h3>2.2 Week 6 / Unit 6: Hybrid, Fog and Edge Computing</h3>
+            <h3>2.3 Unit 6: Hybrid Cloud Solutions (Hybrid, Fog, Edge Computing)</h3>
             <p>
-              The discussion on hybrid, fog and edge computing helped me think more carefully about where workloads and
-              data should be processed. I previously viewed cloud computing mainly around centralised cloud
-              infrastructure, but some applications need faster responses or generate enough data that sending
-              everything to a distant cloud service is inefficient.
+              Hybrid, fog and edge computing changed how I think about workload placement. Centralised cloud
+              infrastructure provides scalable compute and storage, but sending all data to a distant cloud region may
+              be inefficient for latency-sensitive systems. Gupta et al. (2017) show how fog computing moves some
+              processing closer to the edge to reduce latency and network congestion. Zheng et al. (2024) similarly
+              demonstrate the value of nearby data placement in vehicular networks.
             </p>
             <p>
-              Gupta et al. (2017) explain that fog computing extends cloud services towards the edge of the network and
-              can reduce latency and network congestion. Zheng et al. (2024) demonstrate a similar idea in vehicular
-              networks, where frequently requested data is cached on nearby edge nodes to reduce retrieval latency.
-              Their design also stores popular data across two nodes, which helps reduce the risk of a single point of
-              failure.
-            </p>
-            <p>
-              What I found important is that edge computing does not replace the cloud. Both can work together.
-              Time-sensitive processing can happen closer to users or devices, while the cloud can provide larger-scale
-              storage and processing. However, distributing workloads also increases complexity around networking,
-              security, monitoring and data consistency. This made me see edge and hybrid architecture as a trade-off
-              between performance and operational complexity rather than simply a way of making systems faster.
-            </p>
-          </section>
-
-          <section id="disaster-recovery" class="reflection-block">
-            <h3>2.3 Week 8 / Unit 8: Disaster Recovery and Business Continuity</h3>
-            <p>
-              The topic of disaster recovery and business continuity made me think beyond simply keeping a system highly
-              available. A system may tolerate individual component failures and still require a recovery plan for
-              larger incidents such as data corruption, regional outages or major infrastructure failure.
-            </p>
-            <p>
-              Gupta (2024) discusses backups, replication, failover and recovery testing as important parts of disaster
-              recovery planning. What stood out to me was the importance of testing the recovery process rather than
-              assuming that backups or redundant infrastructure will work when needed. Having a backup is different from
-              knowing that it can actually be restored.
-            </p>
-            <p>
-              This became more practical when I designed a disaster recovery plan during the module. The exercise
-              required me to consider backup, failover and recovery requirements instead of treating availability and
-              recoverability as the same thing. However, because I did not perform and record a live recovery or
-              failover
-              test, I view this as a DR design exercise rather than a validated recovery implementation.
-            </p>
-            <p>
-              It showed me that recovery objectives should influence architecture before deployment and that a recovery
-              strategy should eventually be tested against measurable RTO and RPO targets.
+              The important lesson is that edge computing does not replace the cloud. It changes where particular
+              responsibilities are placed. Local processing may improve responsiveness, while the cloud remains useful
+              for aggregation, storage and large-scale analysis. The disadvantage is a more distributed operational
+              model with additional networking, security, monitoring and consistency concerns. I therefore see edge
+              architecture as a performance trade-off, not an automatic upgrade over centralised cloud processing.
             </p>
           </section>
 
           <section id="serverless-computing" class="reflection-block">
-            <h3>2.4 Week 10 / Unit 10: Serverless Computing</h3>
+            <h3>2.4 Unit 10: Advanced Cloud Technologies: Serverless Computing</h3>
             <p>
-              I was already familiar with serverless computing before this module, particularly the idea of running code
-              without managing the underlying servers. The module helped me look at it more critically and consider when
-              it is appropriate rather than focusing only on convenience.
+              Unit 10 focused on serverless computing through technologies such as AWS Lambda and Azure Functions.
+              Serverless can support event-driven workloads, automatic scaling and consumption-based charging while
+              reducing the amount of infrastructure a development team must manage (Kumar and Mahendrakar, 2019).
+              However, Toosi et al. (2025) identify limitations including cold starts, state management, debugging and
+              security, and Ni et al. (2024) show that security risks still exist across several serverless layers.
             </p>
             <p>
-              Kumar and Mahendrakar (2019) describe benefits such as event-driven execution, consumption-based pricing
-              and automatic scaling. These characteristics are useful where workloads are unpredictable or functions
-              only need to run when an event occurs. Toosi et al. (2025) also identify scalability, reduced
-              infrastructure management and faster application development as benefits of the serverless model.
+              I applied the unit practically by defining and deploying a simple AWS Lambda function using AWS CDK (see
+              <a href="#appendix-f">Appendix F</a>). The CDK deployment created a CloudFormation stack and Lambda
+              resource, and I then invoked the function successfully from the AWS console. This provided evidence across
+              definition, deployment, provisioning and functional testing.
             </p>
             <p>
-              The limitations are equally important. Toosi et al. (2025) highlight challenges such as cold starts, state
-              management, debugging, resource management, security and compliance. Ni et al. (2024) focus specifically
-              on security and show that serverless risks can exist across the cloud, container infrastructure,
-              serverless
-              and access layers. Kumar and Mahendrakar (2019) also discuss vendor-specific resources and cross-platform
-              monitoring as disadvantages.
-            </p>
-            <p>
-              The main lesson for me was that serverless reduces some operational responsibilities, but it does not
-              remove architectural responsibility. Security, monitoring, performance, cost and provider dependency still
-              need to be considered before deciding that serverless is the right approach.
+              The exercise reinforced that serverless does not mean responsibility-free. AWS manages the underlying
+              servers, but I still had to define runtime settings, permissions, deployment configuration and tests. The
+              operational responsibility is reduced and shifted rather than removed.
             </p>
           </section>
 
           <section id="ai-cloud" class="reflection-block">
-            <h3>2.5 Week 11 / Unit 11: AI and Cloud Computing</h3>
+            <h3>2.5 Unit 11: AI and Cloud Computing</h3>
             <p>
-              The topic of AI and cloud computing showed how cloud platforms can make AI services easier to adopt by
-              providing scalable computing, storage and managed services. Gupta (2024) discusses the use of AI and
-              machine learning in areas such as automation, anomaly detection, predictive analysis and data-driven
-              decision-making.
+              The later part of the module also considered the growing role of AI in cloud environments. Cloud platforms
+              make AI capabilities easier to adopt by providing scalable compute, storage and managed AI services. Gupta
+              (2024) discusses the use of AI and machine learning for automation, anomaly detection, predictive analysis
+              and data-driven decision-making.
             </p>
             <p>
-              What I found useful was seeing AI as part of a wider cloud architecture rather than as a separate feature.
-              An AI capability still depends on data, storage, security, monitoring and suitable compute resources.
-              Cloud platforms can reduce the effort required to build some of these components from scratch.
+              What became clearer to me is that using AI in the cloud is not simply a matter of selecting an AI service.
+              The quality and usefulness of the result depend on the data available, while privacy, security, cost,
+              monitoring and governance also need to be considered. Managed AI services can reduce the effort required
+              to build infrastructure, but they may also increase dependency on provider-specific platforms, which
+              creates similar portability concerns to other managed cloud services (Opara-Martins, Sahandi and Tian,
+              2016).
             </p>
             <p>
-              However, managed AI services should not automatically be added to a solution simply because they are
-              available. The quality of the output depends heavily on the data, while privacy, cost, governance and
-              provider dependency also need to be considered. For me, AI should solve a clear business problem and
-              provide enough value to justify the additional complexity.
+              The logistics examples also showed how AI can provide practical value. Nowacki and Wierzbic (2024)
+              demonstrate how operational data can support transport demand planning. However, this value depends on
+              having reliable data and a clearly defined business problem.
+            </p>
+            <p>
+              The main lesson for me was that AI should be treated as an architectural decision rather than an optional
+              feature added because the technology is available. I would first define the problem, evaluate whether AI
+              provides measurable value, and then consider the data, cost, security and operational implications before
+              adopting it.
             </p>
           </section>
         </section>
@@ -244,44 +237,37 @@
           <p class="section-number">03</p>
           <h2>Skills Development</h2>
           <p>
-            The practical activities allowed me to apply cloud concepts rather than only discuss them theoretically.
-            Although I already had professional cloud experience, the exercises helped me evaluate architecture choices
-            more systematically.
+            The module strengthened my practical skills in cloud-native deployment and Infrastructure as Code. In Unit
+            5, I configured a Kubernetes Deployment with replicas, rolling updates, health probes, security settings and
+            resource controls, then verified the running workload with <code class="inline-code">kubectl</code> (see
+            <a href="#appendix-b">Appendix B</a>). This moved the activity beyond container packaging into deployment
+            and operational verification.
           </p>
           <p>
-            One area I developed further was Infrastructure as Code. During the module, I worked with Azure Resource
-            Manager (ARM) and later used Terraform when developing the BenLogistics solution. The Azure exercise showed
-            how resources such as App Service, Azure SQL Database and networking components can be defined as code
-            rather
-            than created manually (see <a href="#appendix-a">Appendix A</a>). My Terraform work allowed me to apply the
-            same principle to an AWS-based architecture. The configuration was initialised, validated and planned
-            successfully, providing evidence that the Infrastructure as Code definition was syntactically valid and that
-            Terraform could resolve the proposed AWS resources (see <a href="#appendix-b">Appendix B</a>). I did not run
-            <code class="inline-code">terraform apply</code>, so I treat this as configuration and pre-deployment
-            validation rather than evidence of a live deployment.
+            The Terraform work developed a different skill: describing infrastructure declaratively and validating a
+            proposed AWS environment before deployment (see <a href="#appendix-d">Appendix D</a>). Unit 10 then
+            provided stronger end-to-end implementation evidence because I used AWS CDK to define a Lambda function,
+            deployed the stack through CloudFormation and tested the function successfully (see
+            <a href="#appendix-f">Appendix F</a>).
           </p>
           <p>
-            Using both made me compare the frameworks rather than treating Infrastructure as Code as one approach. ARM
-            was suitable for the Azure exercise because it integrates directly with Azure resources, while Terraform
-            provided the advantage of supporting multiple cloud providers. However, using Terraform does not
-            automatically make an architecture portable. If an application depends heavily on provider-specific
-            services, moving it can still require significant redesign. Opara-Martins, Sahandi and Tian (2016) identify
-            interoperability and portability as important factors in cloud vendor lock-in.
+            Using Kubernetes, Terraform and CDK in the same module helped me compare their purposes more clearly.
+            Kubernetes manages containerised workloads, Terraform focuses on infrastructure provisioning across
+            providers, while CDK allows infrastructure to be expressed using programming languages and synthesised into
+            provider-specific templates.
           </p>
           <p>
-            CloudFormation is another option for BenLogistics because it integrates closely with AWS, but this also
-            makes
-            it provider-specific. Regvart, Vlahović and Balković (2026) compare Terraform, Pulumi and AWS CloudFormation
-            and identify differences in deployment performance and maintainability. This reinforced that the IaC tool
-            should be selected according to the environment and requirements rather than assuming one tool is always
-            better.
+            I also developed my Infrastructure as Code skills through Azure Resource Manager and Terraform. The Azure
+            design exercise demonstrated how PaaS services and hybrid connectivity could be represented as
+            infrastructure architecture (see <a href="#appendix-c">Appendix C</a>), while the Terraform activity gave
+            me practical experience of defining, validating and planning AWS infrastructure changes (see
+            <a href="#appendix-d">Appendix D</a>).
           </p>
           <p>
-            The disaster recovery design exercise also developed my practical understanding of resilience by requiring
-            me to consider failure scenarios, backups, failover and recovery objectives rather than only normal system
-            operation. Overall, the module strengthened how I compare cloud options based on cost, portability,
-            security,
-            resilience and operational effort.
+            The main skill I developed was not simply using each tool, but deciding what evidence is needed to show that
+            something has been designed, configured, validated, deployed and tested. This distinction is important
+            operationally because a successful configuration check does not prove that a service has been deployed
+            correctly, while a successful deployment does not prove that the workload behaves correctly under real use.
           </p>
         </section>
 
@@ -289,45 +275,42 @@
           <p class="section-number">04</p>
           <h2>Application to Industry</h2>
           <p>
-            The logistics industry shows where cloud computing can provide practical value because logistics systems
-            deal with changing demand, real-time information and large amounts of operational data. During the module, I
-            applied these ideas to BenLogistics, a hypothetical logistics company that needed improved scalability,
-            delivery visibility, automation and cost control. The proposed architecture is included in
-            <a href="#appendix-c">Appendix C</a>.
+            I applied the module to Cloud Route Logistics, a hypothetical logistics company that needs scalable customer
+            services while retaining existing operational systems (see <a href="#appendix-e">Appendix E</a>). Logistics
+            workloads are a useful example because shipment volumes change, customers expect real-time visibility, and
+            warehouse or transport systems may be expensive or risky to replace.
           </p>
           <p>
-            A cloud-based solution can support services such as shipping labels, delivery tracking and delivery
-            scheduling. Scalability is particularly relevant because demand can change significantly during seasonal
-            peaks. Instead of maintaining enough infrastructure for the highest expected demand throughout the year,
-            cloud resources can scale according to workload.
+            A hybrid strategy therefore remains appropriate, but reviewing the Cloud Route Logistics design made me
+            recognise that implementation should be phased rather than treated as a single migration. I would begin with
+            relatively independent customer-facing services such as tracking, shipping labels and scheduling while
+            retaining the existing Warehouse Management System (WMS) and Transport Management System (TMS). The next
+            stage would introduce reliable event integration and centralised operational data, with analytics or AI
+            capabilities added only after the underlying data flows and controls were stable. This staged approach is
+            consistent with the AWS Cloud Adoption Framework, which recommends iteratively developing a cloud
+            transformation roadmap while managing organisational and technical risk (Amazon Web Services, 2022).
           </p>
           <p>
-            However, I do not think every existing logistics system should automatically be moved to the cloud. A
-            company
-            may already depend on transport management or warehouse management systems that are expensive or risky to
-            replace immediately. A hybrid approach can allow those systems to remain on-premises while newer
-            customer-facing services and data capabilities are introduced in the cloud. The trade-off is additional
-            integration, networking, security and monitoring requirements.
+            Governance should also be introduced alongside the technical migration rather than after deployment. For
+            Cloud Route Logistics, this would include clear ownership of cloud services, resource tagging, cost
+            monitoring, identity and access controls, logging and security policies. Each migration stage should also
+            have measurable exit criteria, such as acceptable response time, error rate, availability and cost, before
+            additional workloads are moved. AWS identifies governance, cloud financial management and risk management
+            as important capabilities for coordinating cloud initiatives and reducing transformation-related risk
+            (Amazon Web Services, 2022).
           </p>
           <p>
-            AI also has practical applications in logistics. Nowacki and Wierzbic (2024) examine AI for transport demand
-            planning in a logistics organisation, showing how operational data can support planning decisions. This is
-            relevant to BenLogistics because historical shipment and demand data could be used for forecasting rather
-            than relying only on static planning.
+            Research also supports the potential value of more advanced cloud capabilities in logistics. Nowacki and
+            Wierzbic (2024) show how AI can support transport demand planning, while Peng et al. (2024) demonstrate how
+            cloud-edge approaches can adapt delivery routes in response to changing conditions. However, these
+            technologies depend on reliable operational data and integration. Introducing AI or edge processing before
+            those foundations are stable could increase complexity without delivering the expected business value.
           </p>
           <p>
-            Edge computing may provide value where decisions depend on current road or vehicle information. Peng et al.
-            (2024) demonstrate a cloud-edge approach in which edge devices monitor changing road conditions and the
-            cloud
-            supports dynamic delivery route adjustment. This shows a practical use of edge computing in logistics,
-            although the latency benefit must still be balanced against the added complexity of distributed
-            infrastructure.
-          </p>
-          <p>
-            The main point I took from applying the module to logistics is that cloud adoption should start with the
-            business problem. Scalability, managed services, serverless technologies, AI and edge computing can provide
-            value, but using more cloud services does not automatically produce a better architecture. The benefits need
-            to be balanced against migration risk, security, cost, resilience and operational complexity.
+            The main lesson for me is that cloud adoption should be driven by business need, risk and measurable
+            evidence rather than by the availability of new technologies. A technically advanced architecture is not
+            necessarily a better architecture if the organisation cannot operate, govern or justify its additional
+            complexity.
           </p>
         </section>
 
@@ -335,31 +318,32 @@
           <p class="section-number">05</p>
           <h2>Future Learning Goals</h2>
           <p>
-            My future development will focus on three measurable areas.
+            My future learning will focus on applying the technologies from this module in practical situations rather
+            than only studying them theoretically.
           </p>
           <p>
-            First, by January 2027, I plan to develop a reusable Terraform module for a small cloud environment and
-            integrate <code class="inline-code">terraform fmt</code>, <code class="inline-code">validate</code> and
-            <code class="inline-code">plan</code> checks into a CI/CD pipeline. I will consider this successful when the
-            module can be reused across at least two environments with the validation pipeline completing successfully.
+            First, by January 2027, I plan to develop a reusable Terraform module and integrate
+            <code class="inline-code">terraform fmt</code>, <code class="inline-code">terraform validate</code> and
+            <code class="inline-code">terraform plan</code> into a CI/CD pipeline. I intend to use this either within an
+            appropriate professional project or one of my own side projects. I will consider the goal successful when
+            the same module can be used across at least two environments and passes the automated validation process.
           </p>
           <p>
-            Second, by March 2027, I plan to build and test a small multi-region disaster recovery prototype. I will
-            define an RTO of less than 30 minutes and an RPO of less than 5 minutes, perform a documented recovery or
-            failover test, and compare the observed recovery results with these targets. This builds directly on the
-            disaster recovery design work completed during Unit 8.
+            Second, by March 2027, I plan to compare a serverless implementation with a container-based implementation of
+            the same small workload. I can apply this through a side project or, where appropriate, a work-based proof of
+            concept. I will compare deployment effort, response time, operational responsibility, cost and testing
+            requirements. This will extend the practical experience I gained with Kubernetes in Unit 5 and AWS Lambda in
+            Unit 10.
           </p>
           <p>
-            Finally, by June 2027, I plan to build small serverless, managed PaaS and edge-oriented prototypes and
-            compare
-            them using performance, cost, security and operational complexity. Serverless computing, discussed in Unit
-            10, still presents challenges around cold starts, state, debugging and security (Toosi et al., 2025), while
-            the later units also demonstrated the growing importance of AI-enabled cloud services. My aim is to document
-            when each architectural approach provides sufficient benefit to justify its additional complexity.
+            Finally, by June 2027, I plan to develop a small cloud-based AI feature, either as part of a side project or
+            where suitable within my professional work. The aim will be to solve a clearly defined problem rather than
+            simply demonstrate the technology. I will evaluate the implementation using factors such as response
+            quality, latency, cost, privacy and operational complexity.
           </p>
           <p>
-            These goals will allow me to move from understanding cloud technologies individually towards evaluating them
-            using measurable architectural and operational requirements.
+            These goals will allow me to apply the module learning in realistic environments and develop stronger
+            evidence for future architectural decisions.
           </p>
         </section>
 
@@ -367,20 +351,20 @@
           <p class="section-number">06</p>
           <h2>Conclusion</h2>
           <p>
-            Overall, this module strengthened how I approach cloud architecture. It encouraged me to move beyond
-            individual services and consider the trade-offs created by each architectural decision.
+            This module strengthened my ability to evaluate cloud technologies rather than treating adoption as
+            automatically beneficial. Across service models, Kubernetes, Infrastructure as Code, edge computing and
+            serverless computing, the same pattern appeared: a technology can reduce one type of complexity while
+            introducing another.
           </p>
           <p>
-            One of the most important lessons for me is that reducing operational responsibility often shifts
-            responsibility rather than removing it. PaaS and serverless reduce infrastructure management but can
-            increase provider dependency. Hybrid and edge architectures can improve control or responsiveness but
-            introduce additional operational complexity. Infrastructure as Code improves consistency, but using a
-            portable tool does not automatically make the architecture portable.
+            The practical work also improved how I evaluate technical evidence. A diagram demonstrates design,
+            validation demonstrates configuration quality, deployment proves resource creation, and testing provides
+            evidence that the deployed service works.
           </p>
           <p>
-            Going forward, I would start with workload and business requirements, identify the required control,
-            resilience and performance, and choose the simplest architecture that meets them. This is the main change in
-            how I now evaluate cloud solutions.
+            Going forward, I would begin with workload and business requirements, select the simplest architecture that
+            meets them, and use measurable evidence to justify further complexity. This approach is more sustainable than
+            selecting technologies first and then trying to fit the workload around them.
           </p>
         </section>
 
@@ -388,12 +372,31 @@
           <p class="section-number">R</p>
           <h2>References</h2>
           <div class="reference-list">
+            <p id="reference-aws-caf-2022">
+              Amazon Web Services (2022) <em>AWS Cloud Adoption Framework: Governance Perspective</em>.
+              <a href="https://docs.aws.amazon.com/whitepapers/latest/aws-caf-governance-perspective/aws-caf-governance-perspective.html"
+                target="_blank" rel="noopener noreferrer">View publication<span class="visually-hidden"> (opens in a
+                  new tab)</span></a> (Accessed: 18 October 2026).
+            </p>
+            <p id="reference-aws-savings-plans-2026">
+              Amazon Web Services (2026) <em>What are Savings Plans?</em>
+              <a href="https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html"
+                target="_blank" rel="noopener noreferrer">View publication<span class="visually-hidden"> (opens in a
+                  new tab)</span></a> (Accessed: 7 August 2026).
+            </p>
+            <p id="reference-burns-et-al-2016">
+              Burns, B., Grant, B., Oppenheimer, D., Brewer, E. and Wilkes, J. (2016) ‘Borg, Omega, and Kubernetes’,
+              <em>Communications of the ACM</em>, 59(5), pp. 50–57.
+              <a href="https://doi.org/10.1145/2890784" target="_blank"
+                rel="noopener noreferrer">https://doi.org/10.1145/2890784<span class="visually-hidden"> (opens in a new
+                  tab)</span></a>.
+            </p>
             <p id="reference-gupta-2024">
               Gupta, D. (2024) <em>The Cloud Computing Journey: Design and deploy resilient and secure multi-cloud
                 systems with practical guidance</em>. Birmingham: Packt Publishing.
               <a href="https://www.packtpub.com/en-us/product/the-cloud-computing-journey-9781805122289" target="_blank"
                 rel="noopener noreferrer">View publication<span class="visually-hidden"> (opens in a new
-                  tab)</span></a>.
+                  tab)</span></a> (Accessed: 16 October 2026).
             </p>
             <p id="reference-gupta-et-al-2017">
               Gupta, H., Vahid Dastjerdi, A., Ghosh, S.K. and Buyya, R. (2017) ‘iFogSim: A toolkit for modeling and
@@ -403,12 +406,20 @@
                 rel="noopener noreferrer">https://doi.org/10.1002/spe.2509<span class="visually-hidden"> (opens in a new
                   tab)</span></a>.
             </p>
+            <p id="reference-kamal-et-al-2020">
+              Kamal, M.A., Raza, H.W., Alam, M.M. and Su’ud, M.M. (2020) ‘Highlight the features of AWS, GCP and
+              Microsoft Azure that have an impact when choosing a cloud service provider’, <em>International Journal of
+                Recent Technology and Engineering</em>, 8(5), pp. 4124–4132.
+              <a href="https://doi.org/10.35940/ijrte.D8573.018520" target="_blank"
+                rel="noopener noreferrer">https://doi.org/10.35940/ijrte.D8573.018520<span class="visually-hidden">
+                  (opens in a new tab)</span></a>.
+            </p>
             <p id="reference-kumar-mahendrakar-2019">
               Kumar, A. and Mahendrakar, S. (2019) <em>Serverless Integration Design Patterns with Azure: Build powerful
                 cloud solutions that sustain next-generation products</em>. Birmingham: Packt Publishing.
               <a href="https://www.packtpub.com/en-us/product/serverless-integration-design-patterns-with-azure-9781788399234"
                 target="_blank" rel="noopener noreferrer">View publication<span class="visually-hidden"> (opens in a new
-                  tab)</span></a>.
+                  tab)</span></a> (Accessed: 16 October 2026).
             </p>
             <p id="reference-mell-grance-2011">
               Mell, P. and Grance, T. (2011) <em>The NIST Definition of Cloud Computing</em>. NIST Special Publication
@@ -447,21 +458,26 @@
                 rel="noopener noreferrer">https://doi.org/10.1186/s13677-024-00613-z<span class="visually-hidden">
                   (opens in a new tab)</span></a>.
             </p>
-            <p id="reference-regvart-et-al-2026">
-              Regvart, D., Vlahović, I. and Balković, M. (2026) ‘A controlled comparative evaluation of Infrastructure
-              as Code tools: Deployment performance and maintainability across Terraform, Pulumi, and AWS
-              CloudFormation’, <em>Applied Sciences</em>, 16(6), article 2971.
-              <a href="https://doi.org/10.3390/app16062971" target="_blank"
-                rel="noopener noreferrer">https://doi.org/10.3390/app16062971<span class="visually-hidden"> (opens in a
-                  new tab)</span></a>.
+            <p id="reference-rajendran-et-al-2023">
+              Rajendran, P., Maloo, S., Mitra, R., Chanchal, A. and Aburukba, R. (2023) ‘Comparison of cloud-computing
+              providers for deployment of object-detection deep learning models’, <em>Applied Sciences</em>, 13(23),
+              article 12577.
+              <a href="https://doi.org/10.3390/app132312577" target="_blank"
+                rel="noopener noreferrer">https://doi.org/10.3390/app132312577<span class="visually-hidden"> (opens in
+                  a new tab)</span></a>.
             </p>
             <p id="reference-toosi-et-al-2025">
-              Toosi, A.N., Javadi, B., Iosup, A., Smirni, E. and Dustdar, S. (2025) ‘Serverless Computing for
-              Next-generation Application Development’, <em>Future Generation Computer Systems</em>, 164, pp. 1–5,
-              article 107573.
+              Toosi, A.N., Javadi, B., Iosup, A., Smirni, E. and Dustdar, S. (2025) ‘Serverless computing for
+              next-generation application development’, <em>Future Generation Computer Systems</em>, 164, article
+              107573.
               <a href="https://doi.org/10.1016/j.future.2024.107573" target="_blank"
                 rel="noopener noreferrer">https://doi.org/10.1016/j.future.2024.107573<span class="visually-hidden">
                   (opens in a new tab)</span></a>.
+            </p>
+            <p id="reference-wiggins-2017">
+              Wiggins, A. (2017) <em>The Twelve-Factor App</em>.
+              <a href="https://12factor.net/" target="_blank" rel="noopener noreferrer">https://12factor.net/<span
+                  class="visually-hidden"> (opens in a new tab)</span></a> (Accessed: 18 October 2026).
             </p>
             <p id="reference-zheng-et-al-2024">
               Zheng, Y., Chen, Y., Tan, C., Yang, Y., Shu, C. and Chen, L. (2024) ‘Optimization model for vehicular
@@ -474,11 +490,112 @@
         </section>
 
         <section id="appendices" class="article-section appendices-section">
-          <p class="section-number">A–C</p>
+          <p class="section-number">A–G</p>
           <h2>Appendices</h2>
 
           <section id="appendix-a" class="appendix-block">
             <p class="subsection-number">Appendix A</p>
+            <h3>Unit 1 Discussion — Comparing AWS and Microsoft Azure Service Models</h3>
+            <p>
+              This appendix reproduces my Unit 1 discussion-board contribution and the lecturer feedback received. The
+              lecturer salutation has been removed from the feedback for anonymity.
+            </p>
+            <h4>Discussion-board contribution</h4>
+            <p>
+              Amazon Web Services (AWS) and Microsoft Azure are major cloud providers offering Infrastructure as a
+              Service (IaaS), Platform as a Service (PaaS) and serverless computing. Although their core services are
+              comparable, they differ in flexibility, ease of use, pricing and suitability for particular workloads.
+            </p>
+            <p>
+              AWS provides a broad range of services across compute, storage, databases and application development.
+              Examples include RDS for database service, S3 for object storage and Lambda for serverless computing. This
+              wide service portfolio provides organisations with considerable flexibility when designing cloud
+              architectures. Kamal et al. (2020) identify AWS as particularly strong in infrastructure services, while
+              Azure has strengths in PaaS and integration with Microsoft technologies. However, a wider range of
+              configuration options can also increase complexity for inexperienced users.
+            </p>
+            <p>
+              Azure provides comparable services including Azure Virtual Machines, Blob Storage and Azure Functions.
+              Its close integration with Microsoft technologies can make it particularly suitable for enterprises
+              already using products such as Windows Server, Microsoft Entra ID and Microsoft 365. Research comparing
+              AWS and Azure also indicates that ease of deployment can depend considerably on the workload rather than
+              one platform being universally easier to use (Rajendran et al., 2023).
+            </p>
+            <p>
+              Pricing is another important consideration. Both providers offer pay-as-you-go models as well as discounts
+              for predictable workloads. AWS, for example, provides Savings Plans in exchange for commitments to
+              consistent compute usage (Amazon Web Services, 2026). However, direct price comparisons can be difficult
+              because costs vary according to region, resource configuration, workload and usage patterns.
+            </p>
+            <p>
+              Overall, AWS may be more appropriate where organisations require a broad range of services and
+              architectural flexibility, while Azure may be particularly attractive to organisations already invested
+              in Microsoft's enterprise ecosystem. Therefore, provider selection should be based on specific technical,
+              organisational and financial requirements rather than assuming that one platform is universally superior.
+            </p>
+            <h4>Lecturer feedback</h4>
+            <blockquote class="feedback-quote">
+              Good work. your comparison is clear because you connect the service models to recognisable examples such
+              as RDS, S3 and Lambda on AWS, and Virtual Machines, Blob Storage and Functions on Azure. I particularly
+              liked your balanced point that AWS's larger service portfolio can improve architectural flexibility but
+              also increase complexity, while Azure's advantage often comes from Microsoft ecosystem fit rather than
+              being universally easier (Kamal et al., 2020; Rajendran et al., 2023). Your pricing paragraph is also
+              sensible, since Savings Plans and other discounts only become meaningful when assessed against region,
+              configuration and workload patterns (Amazon Web Services, 2026).
+            </blockquote>
+          </section>
+
+          <section id="appendix-b" class="appendix-block">
+            <p class="subsection-number">Appendix B</p>
+            <h3>Unit 5 — Cloud Native Technology Part 2</h3>
+            <p>
+              This appendix provides practical evidence from the Unit 5 Kubernetes activity. A containerised application
+              named FocusFlow was deployed to a local Kubernetes environment using Minikube and verified using
+              <code class="inline-code">kubectl</code>.
+            </p>
+            <h4>Kubernetes Deployment configuration</h4>
+            <figure class="evidence-figure">
+              <a class="evidence-image-link evidence-image-link-dark" href="focusflow-deployment.png" target="_blank"
+                rel="noopener noreferrer">
+                <img class="evidence-image" src="focusflow-deployment.png" width="890" height="834" loading="lazy"
+                  decoding="async"
+                  alt="FocusFlow Kubernetes Deployment manifest showing two replicas, rolling-update settings, security controls, container configuration and startup, readiness and liveness probes.">
+                <span class="visually-hidden">Open full-size FocusFlow Kubernetes Deployment manifest in a new
+                  tab</span>
+              </a>
+              <figcaption><strong>Figure B1.</strong> Kubernetes Deployment manifest defining two replicas, rolling
+                updates, resource controls, security settings and health probes.</figcaption>
+            </figure>
+            <h4>Kubernetes deployed resources</h4>
+            <figure class="evidence-figure">
+              <a class="evidence-image-link evidence-image-link-dark" href="focusflow-resources.png" target="_blank"
+                rel="noopener noreferrer">
+                <img class="evidence-image" src="focusflow-resources.png" width="890" height="226" loading="lazy"
+                  decoding="async"
+                  alt="Terminal output from kubectl get all in the focusflow namespace showing two Running pods, a ClusterIP service, an available Deployment and its ReplicaSet.">
+                <span class="visually-hidden">Open full-size FocusFlow deployed resources screenshot in a new
+                  tab</span>
+              </a>
+              <figcaption><strong>Figure B2.</strong> <code class="inline-code">kubectl</code> output showing two running
+                pods, the Deployment, ReplicaSet and ClusterIP service in the <code class="inline-code">focusflow</code>
+                namespace.</figcaption>
+            </figure>
+            <h4>Kubernetes pod verification</h4>
+            <figure class="evidence-figure">
+              <a class="evidence-image-link evidence-image-link-dark" href="focusflow-pod-verification.png"
+                target="_blank" rel="noopener noreferrer">
+                <img class="evidence-image" src="focusflow-pod-verification.png" width="890" height="696"
+                  loading="lazy" decoding="async"
+                  alt="Terminal output showing two Running and Ready FocusFlow pods followed by detailed pod status, resource requests and limits, health probes, conditions and events.">
+                <span class="visually-hidden">Open full-size FocusFlow pod verification screenshot in a new tab</span>
+              </a>
+              <figcaption><strong>Figure B3.</strong> <code class="inline-code">kubectl</code> pod details confirming the
+                workload is Running and Ready, with configured probes and resource limits.</figcaption>
+            </figure>
+          </section>
+
+          <section id="appendix-c" class="appendix-block">
+            <p class="subsection-number">Appendix C</p>
             <h3>Azure Infrastructure Design</h3>
             <p>This appendix provides evidence of the Azure infrastructure design completed during the module.</p>
             <figure class="evidence-figure">
@@ -487,27 +604,68 @@
                   alt="Azure architecture showing Front Door, App Service, SQL Database and a VPN connection to on-premises systems, with ARM deployment through a CI/CD pipeline.">
                 <span class="visually-hidden">Open full-size Azure infrastructure diagram in a new tab</span>
               </a>
-              <figcaption><strong>Figure A1: Azure Infrastructure Design.</strong> The diagram shows the use of Azure
-                App Service, Azure SQL Database, Azure Front Door and hybrid connectivity through Azure networking
-                components.</figcaption>
+              <figcaption><strong>Figure C1.</strong> Azure Infrastructure Design using Azure Resource Manager, Azure
+                PaaS services and hybrid connectivity.</figcaption>
             </figure>
           </section>
 
-          <section id="appendix-b" class="appendix-block">
-            <p class="subsection-number">Appendix B</p>
-            <h3>Infrastructure as Code Evidence</h3>
-            <p>This appendix provides an example of the Infrastructure as Code work completed during the module.</p>
-            <figure class="evidence-figure">
-              <a class="evidence-image-link evidence-image-link-dark" href="Screenshot 2026-10-06 at 00.38.36.png"
-                target="_blank" rel="noopener noreferrer">
-                <img class="evidence-image" src="Screenshot 2026-10-06 at 00.38.36.png" width="1204" height="1686"
-                  loading="lazy" decoding="async"
-                  alt="Terraform vpc.tf configuration in a code editor, showing the AWS provider, VPC, two private subnets and the beginning of an S3 data lake configuration.">
-                <span class="visually-hidden">Open full-size Terraform configuration screenshot in a new tab</span>
-              </a>
-              <figcaption><strong>Figure B1: Terraform source code.</strong> The source file defines AWS networking
-                and storage resources for the BenLogistics environment.</figcaption>
+          <section id="appendix-d" class="appendix-block">
+            <p class="subsection-number">Appendix D</p>
+            <h3>Terraform Infrastructure as Code Evidence</h3>
+            <p>
+              This appendix provides Terraform evidence developed for the logistics architecture exercise. The case
+              study was later renamed Cloud Route Logistics; the Terraform execution screenshots were produced before
+              that naming change. The configuration was initialised, validated and planned;
+              <code class="inline-code">terraform apply</code> was not performed.
+            </p>
+            <h4>Selected Terraform source code</h4>
+            <figure class="code-figure code-figure-compact">
+              <div class="code-window">
+                <div class="code-toolbar">
+                  <span class="window-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+                  <span>vpc.tf</span>
+                </div>
+                <pre tabindex="0"><code>resource "aws_vpc" "main" {
+  cidr_block           = "10.0.0.0/16"
+  enable_dns_support   = true
+  enable_dns_hostnames = true
+}
+
+resource "aws_subnet" "private_a" {
+  vpc_id                 = aws_vpc.main.id
+  cidr_block              = "10.0.1.0/24"
+  availability_zone       = "eu-west-1a"
+  map_public_ip_on_launch = false
+}
+
+resource "aws_subnet" "private_b" {
+  vpc_id                 = aws_vpc.main.id
+  cidr_block              = "10.0.2.0/24"
+  availability_zone       = "eu-west-1b"
+  map_public_ip_on_launch = false
+}
+
+resource "aws_s3_bucket" "data_lake" {
+  bucket_prefix = "cloud-route-logistics-data-lake-"
+  tags = { Name = "Cloud Route Logistics Data Lake" }
+}</code></pre>
+              </div>
+              <figcaption><strong>Listing D1.</strong> Representative Terraform configuration for the Cloud Route
+                Logistics VPC, private subnets and S3 data lake.</figcaption>
             </figure>
+            <h4>Terraform initialisation</h4>
+            <figure class="evidence-figure">
+              <a class="evidence-image-link evidence-image-link-dark" href="terraform-init.png" target="_blank"
+                rel="noopener noreferrer">
+                <img class="evidence-image" src="terraform-init.png" width="1224" height="646" loading="lazy"
+                  decoding="async"
+                  alt="Terminal output from terraform init showing backend initialisation, installation of the HashiCorp AWS provider and confirmation that Terraform was successfully initialised.">
+                <span class="visually-hidden">Open full-size Terraform initialisation screenshot in a new tab</span>
+              </a>
+              <figcaption><strong>Figure D1.</strong> Successful Terraform initialisation and installation of the AWS
+                provider.</figcaption>
+            </figure>
+            <h4>Terraform validation</h4>
             <figure class="evidence-figure">
               <a class="evidence-image-link evidence-image-link-dark" href="terraform-validation.png" target="_blank"
                 rel="noopener noreferrer">
@@ -516,9 +674,9 @@
                   alt="Terminal output from terraform validate ending with the successful result: Success! The configuration is valid.">
                 <span class="visually-hidden">Open full-size Terraform validation screenshot in a new tab</span>
               </a>
-              <figcaption><strong>Figure B2: Terraform validation.</strong> Terraform successfully validated the
-                configuration before planning, confirming that its syntax and internal references were valid.</figcaption>
+              <figcaption><strong>Figure D2.</strong> Successful validation of the Terraform configuration.</figcaption>
             </figure>
+            <h4>Terraform execution plan</h4>
             <figure class="evidence-figure">
               <a class="evidence-image-link evidence-image-link-dark" href="terraform.png" target="_blank"
                 rel="noopener noreferrer">
@@ -527,27 +685,97 @@
                   alt="Terraform plan output showing AWS VPC and private subnet resources to be created in the eu-west-1 region.">
                 <span class="visually-hidden">Open full-size Terraform plan image in a new tab</span>
               </a>
-              <figcaption><strong>Figure B3: Terraform plan.</strong> The Terraform plan
-                previews infrastructure changes generated from configuration defined as code rather than resources
-                configured manually through a cloud portal.</figcaption>
+              <figcaption><strong>Figure D3.</strong> Terraform plan showing proposed AWS infrastructure changes before
+                deployment.</figcaption>
             </figure>
           </section>
 
-          <section id="appendix-c" class="appendix-block">
-            <p class="subsection-number">Appendix C</p>
-            <h3>BenLogistics Cloud Architecture</h3>
-            <p>This appendix provides the final architecture developed for the BenLogistics logistics scenario.</p>
+          <section id="appendix-e" class="appendix-block">
+            <p class="subsection-number">Appendix E</p>
+            <h3>Cloud Route Logistics Cloud Architecture</h3>
+            <p>This appendix provides the final architecture developed for the Cloud Route Logistics scenario.</p>
             <figure class="evidence-figure">
               <a class="evidence-image-link" href="ben-logistics.png" target="_blank" rel="noopener noreferrer">
                 <img class="evidence-image" src="ben-logistics.png" width="2618" height="1240" loading="lazy"
                   decoding="async"
-                  alt="BenLogistics hybrid AWS architecture connecting customer, event-processing and analytics services to on-premises systems through a site-to-site VPN, with infrastructure provisioned by Terraform.">
-                <span class="visually-hidden">Open full-size BenLogistics cloud architecture diagram in a new tab</span>
+                  alt="Cloud Route Logistics hybrid AWS architecture connecting customer, event-processing and analytics services to on-premises WMS and TMS systems through a site-to-site VPN, with infrastructure provisioned by Terraform.">
+                <span class="visually-hidden">Open full-size Cloud Route Logistics architecture diagram in a new
+                  tab</span>
               </a>
-              <figcaption><strong>Figure C1: BenLogistics Cloud Architecture.</strong> The architecture demonstrates how
-                cloud services can support scalable customer services, data storage, integration with existing systems
-                and other logistics requirements.</figcaption>
+              <figcaption><strong>Figure E1.</strong> Proposed Cloud Route Logistics hybrid cloud architecture.</figcaption>
             </figure>
+          </section>
+
+          <section id="appendix-f" class="appendix-block">
+            <p class="subsection-number">Appendix F</p>
+            <h3>Unit 10 — Advanced Cloud Technologies: Serverless Computing</h3>
+            <p>
+              This appendix provides practical implementation evidence from Unit 10. AWS CDK was used to define and
+              deploy a Lambda function, CloudFormation managed the resource creation, and the deployed function was
+              tested successfully.
+            </p>
+            <h4>AWS CDK Lambda configuration</h4>
+            <figure class="evidence-figure">
+              <a class="evidence-image-link evidence-image-link-dark" href="lambda-cdk-stack.png" target="_blank"
+                rel="noopener noreferrer">
+                <img class="evidence-image" src="lambda-cdk-stack.png" width="890" height="696" loading="lazy"
+                  decoding="async"
+                  alt="TypeScript AWS CDK stack defining a Node.js 22 Lambda function with its handler, code asset, 128 MB memory, ten-second timeout, description and CloudFormation outputs.">
+                <span class="visually-hidden">Open full-size AWS CDK Lambda stack screenshot in a new tab</span>
+              </a>
+              <figcaption><strong>Figure F1.</strong> AWS CDK stack defining the Lambda runtime, handler, code asset,
+                memory size, timeout and CloudFormation outputs.</figcaption>
+            </figure>
+            <h4>Successful AWS CDK deployment</h4>
+            <figure class="evidence-figure">
+              <a class="evidence-image-link evidence-image-link-dark" href="lambda-cdk-deployment.png"
+                target="_blank" rel="noopener noreferrer">
+                <img class="evidence-image" src="lambda-cdk-deployment.png" width="890" height="592" loading="lazy"
+                  decoding="async"
+                  alt="Terminal output from an AWS CDK deployment showing SimpleLambdaStack deployed successfully and listing the Lambda function ARN, generated function name and CloudFormation stack ARN.">
+                <span class="visually-hidden">Open full-size successful AWS CDK deployment screenshot in a new
+                  tab</span>
+              </a>
+              <figcaption><strong>Figure F2.</strong> Successful deployment of
+                <code class="inline-code">SimpleLambdaStack</code>, including the generated Lambda function name and
+                ARN.</figcaption>
+            </figure>
+            <h4>AWS CloudFormation stack creation</h4>
+            <figure class="evidence-figure">
+              <a class="evidence-image-link" href="lambda-cloudformation.png" target="_blank"
+                rel="noopener noreferrer">
+                <img class="evidence-image" src="lambda-cloudformation.png" width="890" height="496" loading="lazy"
+                  decoding="async"
+                  alt="AWS CloudFormation Events view for SimpleLambdaStack showing CREATE_COMPLETE for both the Lambda function and the overall stack.">
+                <span class="visually-hidden">Open full-size CloudFormation stack events screenshot in a new tab</span>
+              </a>
+              <figcaption><strong>Figure F3.</strong> CloudFormation events showing
+                <code class="inline-code">CREATE_COMPLETE</code> for the Lambda function and the overall stack.</figcaption>
+            </figure>
+            <h4>Successful Lambda function test</h4>
+            <figure class="evidence-figure">
+              <a class="evidence-image-link" href="lambda-test.png" target="_blank" rel="noopener noreferrer">
+                <img class="evidence-image" src="lambda-test.png" width="890" height="402" loading="lazy"
+                  decoding="async"
+                  alt="AWS Lambda console test result showing a successful invocation, HTTP status code 200, response body, execution duration, configured memory, maximum memory used and log output.">
+                <span class="visually-hidden">Open full-size successful Lambda function test screenshot in a new
+                  tab</span>
+              </a>
+              <figcaption><strong>Figure F4.</strong> Successful Lambda invocation returning HTTP status code 200, with
+                execution duration, memory usage and log output.</figcaption>
+            </figure>
+          </section>
+
+          <section id="appendix-g" class="appendix-block">
+            <p class="subsection-number">Appendix G</p>
+            <h3>Live e-Portfolio</h3>
+            <p>
+              An online version of the Cloud Operations and Management e-Portfolio, including supporting evidence and
+              diagrams, is available at
+              <a href="https://rexben001.github.io/cloud-computing.html" target="_blank"
+                rel="noopener noreferrer">rexben001.github.io/cloud-computing.html<span class="visually-hidden"> (opens
+                  in a new tab)</span></a>.
+            </p>
           </section>
         </section>
       </article>
